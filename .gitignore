@@ -2,3 +2,4 @@
 node_modules/
 vendor/
 docker/db.env
+config/db/config.php

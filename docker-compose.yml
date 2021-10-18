@@ -9,7 +9,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./:/var/www/html/
+      - ./:/var/www/html/public
     ports:
       - 8000:80
   db:
