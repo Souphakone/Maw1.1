@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-require_once 'config.php';
+include(realpath(dirname(__FILE__) . '/../config/db.php'));
 
 use PDO;
 use PDOException;
@@ -80,7 +80,7 @@ class DB
      * Insert an entry and return last insert id
      * @param $query
      * @param array $params
-     * @return string | false
+     * @return int
      * @throws PDOException
      */
     static function insert($query, array $params): int
