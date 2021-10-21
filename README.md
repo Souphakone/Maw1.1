@@ -5,14 +5,10 @@
 
 ## Authors
 
----
-
 - [Ohan Mélodie](https://github.com/melohan)
 - [Samoutphonh Souphakone](https://github.com/Souphakone)
 
 ## Installing
-
----
 
 ### Docker
 
@@ -22,8 +18,6 @@ If an error occurs and the activation of virtualization in the BIOS is not suffi
 this [document](https://docs.microsoft.com/fr-fr/windows/wsl/install-manual).
 
 ## Developing
-
----
 
 ### Built With
 
@@ -51,8 +45,6 @@ npm install
 These commands download project sources, install phpUnit and configure requirement for autoloader.
 
 ## Configuration
-
----
 
 > Every file or command is created or executed from the root.
 
