@@ -39,7 +39,7 @@ INSERT INTO looper.users (name) VALUES ("2020-09-15 09:57:08 UTC");
 INSERT INTO looper.users (name) VALUES ("2020-10-29 12:36:32 UTC");
 INSERT INTO looper.users (name) VALUES ("2020-12-18 12:41:45 UTC");
 
---  ----------------- Answers insertion ----------------- --
+--  ----------------- Answer insertion ----------------- --
 
 INSERT INTO looper.answers (question_id, user_id, answer) VALUES (1,1,"24 octobre 1945");
 INSERT INTO looper.answers (question_id, user_id, answer) VALUES (1,2,"1 novembre 1993");

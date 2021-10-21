@@ -4,14 +4,22 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Question;
+use function PHPUnit\Framework\isNull;
 
-class Answers extends Model
+class Answer extends Model
 {
+    private int $id;
     private Question $question;
     private User $user;
     private string $answer;
 
-    public function __construct(int $questionId = null, int $userId = null, string $answer = null)
+    /**
+     * Initialize user, question object and set attributes if all parameters have been assigned.
+     * @param int|null $questionId
+     * @param int|null $userId
+     * @param string|null $answer
+     */
+    public function __construct(int $id = null, int $questionId = null, int $userId = null, string $answer = null)
     {
         $this->user = new User();
         $this->question = new Question();
@@ -26,7 +34,7 @@ class Answers extends Model
 
     /*      Setter & getters    */
 
-    public function setAnswer($answer)
+    public function setAnswer(string $answer)
     {
         $this->answer = $answer;
     }
@@ -46,28 +54,37 @@ class Answers extends Model
         return $this->user;
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /*     Operations      */
 
-    // can't be used because DB use double foreign key as id
-    static public function get(int $id): Answers|null
-    {
-        return null;
-    }
 
-    /**
-     * get answers by
-     * @param int $firstId
-     * @param int $scndId
-     * @return Answers|null
-     */
-    static public function getAnswers(int $questionId, int $userId): Answers|null
+    static public function get(int $id): Answer|null
     {
-        $selection = Model::selectByMultipleId(['question_id' => $questionId, 'user_id' => $userId]);
+        $selection = parent::selectWhere('id', $id);
         if (!count($selection)) {
             return null;
         }
-        return new Answers($selection['question_id'], $selection['user_id'], $selection['answer']);
+        return new Answer($selection['id'], $selection['question_id'], $selection['user_id'], $selection['answer']);;
+    }
+
+    /**
+     * get answers by question and user id
+     * @param int $firstId
+     * @param int $scndId
+     * @return Answer|null
+     */
+    static public function getAnswers(int $questionId, int $userId): Answer|null
+    {
+        $selection = parent::select("SELECT * FROM answers WHERE answers.question_id = :question_id AND answers.user_id = :user_id", ['question_id' => $questionId, 'user_id' => $userId]);
+        // select is based on select many so we need to access to [0]
+        if (!count($selection)) {
+            return null;
+        }
+        return new Answer($selection['id'], $selection['question_id'], $selection['user_id'], $selection['answer']);
     }
 
 

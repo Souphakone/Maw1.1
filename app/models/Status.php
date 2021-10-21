@@ -8,9 +8,13 @@ class Status extends Model
     private int $id;
     private string $name;
 
+    /**
+     * Set attributes if all parameters have been assigned.
+     * @param int|null $id
+     * @param string|null $name
+     */
     public function __construct(int $id = null, string $name = null)
     {
-
         if ($id != null && $name != null) {
             $this->id = $id;
             $this->name = $name;

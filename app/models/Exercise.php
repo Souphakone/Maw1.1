@@ -10,6 +10,12 @@ class Exercise extends Model
     private string $title;
     private Status $status;
 
+    /**
+     * Initialize status object and set attributes if all parameters have been assigned.
+     * @param int|null $id
+     * @param string|null $title
+     * @param int|null $statusId
+     */
     public function __construct(int $id = null, string $title = null, int $statusId = null)
     {
         $this->status = new Status();

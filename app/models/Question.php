@@ -14,6 +14,13 @@ class Question extends Model
     private Exercise $exercise;
     private Type $type;
 
+    /**
+     * Initialize exercise, type object and set attributes if all parameters have been assigned.
+     * @param int|null $id
+     * @param string|null $text
+     * @param int|null $exercise_id
+     * @param int|null $type_id
+     */
     public function __construct(int $id = null, string $text = null, int $exercise_id = null, int $type_id = null)
     {
         $this->exercise = new Exercise();
