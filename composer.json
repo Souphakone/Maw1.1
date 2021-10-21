@@ -4,7 +4,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Router\\": "routes/",
+            "Router\\": "app/routes/",
             "App\\": "app/",
             "Database\\": "database/"
         }
