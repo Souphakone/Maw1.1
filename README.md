@@ -62,7 +62,7 @@ To set up DB connection and password's, it is necessary to create the file: conf
 
 ```php
 <?php
-// config.php
+// connection.php
 const HOST = '';
 const PORT = '';
 const USER = '';

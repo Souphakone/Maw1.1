@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-include(realpath(dirname(__FILE__) . '/../config/db.php'));
+include_once 'config/db/connection.php';
 
 use PDO;
 use PDOException;
