@@ -140,7 +140,6 @@ abstract class Model
         }
     }
 
-
     /**
      * Update records
      * @param int $id

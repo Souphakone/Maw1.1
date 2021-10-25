@@ -52,8 +52,8 @@ class Status extends Model
         if (!count($selection)) {
             return null;
         }
-        $status = new Status($selection['id'], $selection['name']);
-        return $status;
+
+        return new Status($selection['id'], $selection['name']);
     }
 
     public function edit(): void

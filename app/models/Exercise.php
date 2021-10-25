@@ -79,7 +79,6 @@ class Exercise extends Model
     public function create(): int|false
     {
         $result = parent::insert(['title' => $this->title, 'status_id' => $this->status->getId()]);
-
         if ($result === false) {
             return false;
         } else {

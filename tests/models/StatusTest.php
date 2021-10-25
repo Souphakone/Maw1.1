@@ -119,13 +119,5 @@ class StatusTest extends TestCase
         self::assertFalse($result);
     }
 
-    public function testCreateNullString()
-    {
-        $status = new Status();
-        $name = '';
-        $status->setName($name);
-        $id = $status->create();
-        self::assertSame(4, $id);
-    }
 
 }

@@ -111,7 +111,8 @@ class Answer extends Model
         if ($result === false) {
             return false;
         } else {
-            return 0;
+            $this->id = $result;
+            return $this->id;
         }
     }
 }
