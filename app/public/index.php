@@ -2,7 +2,7 @@
 
 use Router\Router;
 
-require(dirname(dirname(__FILE__)) . '/vendor/autoload.php');
+require('../../vendor/autoload.php');
 
 //Chemin views
 define('VIEWS', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR);
