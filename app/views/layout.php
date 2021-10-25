@@ -26,17 +26,17 @@ if (!isset($headerText)) {
     <script src="/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
 
     <!-- Looper css -->
-    <link rel="stylesheet" href="/public/resources/css/looper.css">
+    <link rel="stylesheet" href="../app/public/resources/css/looper.css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
-    <script src="../public/resources/js/main.js"></script>
+    <script src="../app/public/resources/js/main.js"></script>
 </head>
 
 <body>
     <header class="<?= $headerClass; ?>">
         <section class="container">
-            <a href="/"><img src="../public/resources/img/logo.png" /></a>
+            <a href="/"><img src="../app/public/resources/img/logo.png" /></a>
             <span class='exercise-label'><?= $headerText ?></span>
 
         </section>
