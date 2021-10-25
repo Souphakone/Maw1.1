@@ -34,6 +34,6 @@ class Router {
             }
         }
 
-        throw new Exception("La page demandée est introuvable.");
+        throw new Exception("Page not found");
     }
 }
