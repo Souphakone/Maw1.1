@@ -2,10 +2,10 @@
 
 use Router\Router;
 
-require('../../vendor/autoload.php');
+require(realpath($_SERVER['DOCUMENT_ROOT']).'/vendor/autoload.php');
 
 //Chemin views
-define('VIEWS', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR);
+define('VIEWS', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'resources/views' . DIRECTORY_SEPARATOR);
 
 //Chemin css/js
 define('SCRIPTS', dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR);
