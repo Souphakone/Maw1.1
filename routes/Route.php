@@ -10,10 +10,10 @@ class Route
     public $matches;
 
     /**
-     * Instancie the path and the action 
-     * 
+     * Instancie the path and the action
+     * @param $path
+     * @param $action
      */
-
     public function __construct($path, $action)
     {
         $this->path = trim($path, '/');
@@ -22,7 +22,8 @@ class Route
 
     /**
      * Check if the route validates the URL
-     * 
+     * @param string $url
+     * @return false|int
      */
     public function matches(string $url)
     {
@@ -34,9 +35,8 @@ class Route
 
     /**
      * Call the right controller and method
-     * 
+     * @return mixed
      */
-
     public function execute()
     {
         $params = explode('@', $this->action);

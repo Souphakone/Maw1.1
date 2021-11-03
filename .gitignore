@@ -1,5 +1,4 @@
 .idea
 node_modules/
 vendor/
-docker/db.env
-config/db/connection.php
+config/db.php

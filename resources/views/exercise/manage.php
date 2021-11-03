@@ -3,7 +3,7 @@ $headerText = "";
 $headerClass = "heading results";
 ?>
 
-<script src="../public/resources/js/main.js" async></script>
+<script src="/js/main.js" async></script>
 <div class="row">
     <section class="column">
         <h1>Building</h1>

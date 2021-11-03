@@ -1,8 +1,7 @@
 <?php
-
 use Router\Router;
 
-define('FOLDERROOT', $_SERVER['DOCUMENT_ROOT']);
+define('FOLDERROOT', '../');
 
 require(realpath(FOLDERROOT . '/vendor/autoload.php'));
 
@@ -14,6 +13,7 @@ $router = new Router($_SERVER['REQUEST_URI']);
 
 //Home
 $router->get('/', 'App\Controllers\HomeController@index');
+$router->post('/', 'App\Controllers\HomeController@index');
 
 //Exercise
 $router->get('/exercise/take', 'App\Controllers\exerciseController@take');
@@ -23,8 +23,6 @@ $router->get('/exercise/edit', 'App\Controllers\exerciseController@edit');
 $router->get('/exercise/fields', 'App\Controllers\exerciseController@fields');
 $router->get('/exercise/fulfillments', 'App\Controllers\exerciseController@fulfillments');
 $router->get('/exercise/manage', 'App\Controllers\exerciseController@manage');
-
-//Answer
 
 //Etc
 try {

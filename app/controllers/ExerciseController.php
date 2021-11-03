@@ -13,7 +13,12 @@ class ExerciseController extends Controller
 
     function take()
     {
-        $allExercises = Exercise::selectAll();
-        return $this->view('exercise.take', compact('allExercises'));
+        return $this->view('exercise.take');
     }
+
+    function manage()
+    {
+        return $this->view('exercise.manage');
+    }
+
 }
