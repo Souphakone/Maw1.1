@@ -2,15 +2,15 @@
 
 use Router\Router;
 
-require('../../vendor/autoload.php');
+define('FOLDERROOT', $_SERVER['DOCUMENT_ROOT']);
+
+require(realpath(FOLDERROOT . '/vendor/autoload.php'));
 
 //Chemin views
-define('VIEWS', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR);
-
+define('VIEWS', FOLDERROOT . DIRECTORY_SEPARATOR . 'resources/views' . DIRECTORY_SEPARATOR);
 //Chemin css/js
 define('SCRIPTS', dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR);
-
-$router = new Router($_GET['url']);
+$router = new Router($_SERVER['REQUEST_URI']);
 
 //Home
 $router->get('/', 'App\Controllers\HomeController@index');
@@ -28,6 +28,7 @@ $router->get('/exercise/manage', 'App\Controllers\exerciseController@manage');
 
 //Etc
 try {
+    //
     $router->run();
 } catch (Exception $e) {
     $router->get('/', 'App\Controllers\HomeController@index');

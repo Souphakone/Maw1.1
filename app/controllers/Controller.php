@@ -9,10 +9,9 @@ class Controller
     {
         ob_start();
         $path = str_replace('.', DIRECTORY_SEPARATOR, $path);
-        require VIEWS . $path .'.php';
+        require VIEWS . $path . '.php';
         ($params) ? $params = extract($params) : null;
         $content = ob_get_clean();
         require VIEWS . 'layout.php';
-
     }
 }

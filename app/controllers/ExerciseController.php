@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\Exercise;
+
 class ExerciseController extends Controller
 {
     function index()
@@ -9,33 +11,9 @@ class ExerciseController extends Controller
         return $this->view('exercise.create');
     }
 
-    function create()
-    {
-        return $this->view('exercise.fields');
-    }
-
-    function edit()
-    {
-        return $this->view('exercise.edit');
-    }
-
-    function fields()
-    {
-        return $this->view('exercise.fields');
-    }
-
-    function fulfillments()
-    {
-        return $this->view('exercise.fulfillments');
-    }
-
-    function manage()
-    {
-        return $this->view('exercise.manage');
-    }
-
     function take()
     {
-        return $this->view('exercise.take');
+        $allExercises = Exercise::selectAll();
+        return $this->view('exercise.take', compact('allExercises'));
     }
 }

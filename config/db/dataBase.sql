@@ -8,22 +8,22 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema Looper
+-- Schema looper
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `Looper` ;
+DROP SCHEMA IF EXISTS `looper` ;
 
 -- -----------------------------------------------------
--- Schema Looper
+-- Schema looper
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `Looper` DEFAULT CHARACTER SET utf8 ;
-USE `Looper` ;
+CREATE SCHEMA IF NOT EXISTS `looper` DEFAULT CHARACTER SET utf8 ;
+USE `looper` ;
 
 -- -----------------------------------------------------
--- Table `Looper`.`status`
+-- Table `looper`.`status`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Looper`.`status` ;
+DROP TABLE IF EXISTS `looper`.`status` ;
 
-CREATE TABLE IF NOT EXISTS `Looper`.`status` (
+CREATE TABLE IF NOT EXISTS `looper`.`status` (
                                                  `id` INT NOT NULL AUTO_INCREMENT,
                                                  `name` VARCHAR(45) NOT NULL,
     PRIMARY KEY (`id`),
@@ -32,11 +32,11 @@ CREATE TABLE IF NOT EXISTS `Looper`.`status` (
 
 
 -- -----------------------------------------------------
--- Table `Looper`.`exercises`
+-- Table `looper`.`exercises`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Looper`.`exercises` ;
+DROP TABLE IF EXISTS `looper`.`exercises` ;
 
-CREATE TABLE IF NOT EXISTS `Looper`.`exercises` (
+CREATE TABLE IF NOT EXISTS `looper`.`exercises` (
                                                     `id` INT NOT NULL AUTO_INCREMENT,
                                                     `title` VARCHAR(150) NULL,
     `status_id` INT NOT NULL,
@@ -44,18 +44,18 @@ CREATE TABLE IF NOT EXISTS `Looper`.`exercises` (
     INDEX `fk_exercises_status1_idx` (`status_id` ASC) VISIBLE,
     CONSTRAINT `fk_exercises_status1`
     FOREIGN KEY (`status_id`)
-    REFERENCES `Looper`.`status` (`id`)
+    REFERENCES `looper`.`status` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
     ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Looper`.`types`
+-- Table `looper`.`types`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Looper`.`types` ;
+DROP TABLE IF EXISTS `looper`.`types` ;
 
-CREATE TABLE IF NOT EXISTS `Looper`.`types` (
+CREATE TABLE IF NOT EXISTS `looper`.`types` (
                                                 `id` INT NOT NULL AUTO_INCREMENT,
                                                 `name` VARCHAR(45) NOT NULL,
     PRIMARY KEY (`id`),
@@ -64,11 +64,11 @@ CREATE TABLE IF NOT EXISTS `Looper`.`types` (
 
 
 -- -----------------------------------------------------
--- Table `Looper`.`questions`
+-- Table `looper`.`questions`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Looper`.`questions` ;
+DROP TABLE IF EXISTS `looper`.`questions` ;
 
-CREATE TABLE IF NOT EXISTS `Looper`.`questions` (
+CREATE TABLE IF NOT EXISTS `looper`.`questions` (
                                                     `id` INT NOT NULL AUTO_INCREMENT,
                                                     `text` VARCHAR(255) NULL,
     `exercise_id` INT NOT NULL,
@@ -78,23 +78,23 @@ CREATE TABLE IF NOT EXISTS `Looper`.`questions` (
     INDEX `fk_questions_types1_idx` (`type_id` ASC) VISIBLE,
     CONSTRAINT `fk_questions_exercises`
     FOREIGN KEY (`exercise_id`)
-    REFERENCES `Looper`.`exercises` (`id`)
+    REFERENCES `looper`.`exercises` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     CONSTRAINT `fk_questions_types1`
     FOREIGN KEY (`type_id`)
-    REFERENCES `Looper`.`types` (`id`)
+    REFERENCES `looper`.`types` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
     ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Looper`.`users`
+-- Table `looper`.`users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Looper`.`users` ;
+DROP TABLE IF EXISTS `looper`.`users` ;
 
-CREATE TABLE IF NOT EXISTS `Looper`.`users` (
+CREATE TABLE IF NOT EXISTS `looper`.`users` (
                                                 `id` INT NOT NULL AUTO_INCREMENT,
                                                 `name` VARCHAR(100) NOT NULL DEFAULT 'user',
     PRIMARY KEY (`id`))
@@ -102,11 +102,11 @@ CREATE TABLE IF NOT EXISTS `Looper`.`users` (
 
 
 -- -----------------------------------------------------
--- Table `Looper`.`answers`
+-- Table `looper`.`answers`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Looper`.`answers` ;
+DROP TABLE IF EXISTS `looper`.`answers` ;
 
-CREATE TABLE IF NOT EXISTS `Looper`.`answers` (
+CREATE TABLE IF NOT EXISTS `looper`.`answers` (
                                                   `id` INT NOT NULL AUTO_INCREMENT,
                                                   `question_id` INT NOT NULL,
                                                   `user_id` INT NOT NULL,
@@ -116,12 +116,12 @@ CREATE TABLE IF NOT EXISTS `Looper`.`answers` (
     PRIMARY KEY (`id`),
     CONSTRAINT `fk_answers_questions1`
     FOREIGN KEY (`question_id`)
-    REFERENCES `Looper`.`questions` (`id`)
+    REFERENCES `looper`.`questions` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     CONSTRAINT `fk_answers_users1`
     FOREIGN KEY (`user_id`)
-    REFERENCES `Looper`.`users` (`id`)
+    REFERENCES `looper`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
     ENGINE = InnoDB;

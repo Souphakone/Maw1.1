@@ -9,12 +9,21 @@ class Route
     public $action;
     public $matches;
 
+    /**
+     * Instancie the path and the action 
+     * 
+     */
+
     public function __construct($path, $action)
     {
         $this->path = trim($path, '/');
         $this->action = $action;
     }
 
+    /**
+     * Check if the route validates the URL
+     * 
+     */
     public function matches(string $url)
     {
         $path = preg_replace('#:([\w]+)#', '([^/]+)', $this->path);
@@ -22,6 +31,11 @@ class Route
 
         return (preg_match($pathToMatch, $url, $matches));
     }
+
+    /**
+     * Call the right controller and method
+     * 
+     */
 
     public function execute()
     {
